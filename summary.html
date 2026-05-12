@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nusa Penida Land — Pitch Summary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:  oklch(95%  0.012  80);
+  --stone:  oklch(89%  0.015  75);
+  --ink:    oklch(14%  0.008  90);
+  --deep:   oklch(26%  0.08  245);
+  --gold:   oklch(58%  0.13   78);
+  --gold-l: oklch(68%  0.135  80);
+  --muted:  oklch(40%  0.015  78);
+  --bd:     oklch(14% 0.008 90 / 0.12);
+  --serif: 'Spectral', Georgia, serif;
+  --sans:  'Jost', Helvetica, Arial, sans-serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  background: oklch(86% 0.01 80);
+  font-family: var(--sans);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.6;
+  padding: 2.5rem 1rem;
+}
+
+/* ── PRINT BAR ───────────────────────────────────────────── */
+.print-bar {
+  width: 794px; margin: 0 auto 1.25rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.print-bar p { font-size: 11px; color: oklch(50% 0.01 80); letter-spacing: .05em; }
+.print-btn {
+  background: var(--gold); color: oklch(100% 0 0);
+  border: none; cursor: pointer;
+  font-family: var(--sans); font-size: 11px; letter-spacing: .12em;
+  text-transform: uppercase; font-weight: 500;
+  padding: .6rem 1.4rem;
+  display: inline-flex; align-items: center; gap: .5rem;
+}
+.print-btn:hover { background: var(--gold-l); }
+.print-btn svg { flex-shrink: 0; }
+
+/* ── PAGE SHELL ──────────────────────────────────────────── */
+.page {
+  width: 794px;
+  background: var(--cream);
+  margin: 0 auto 2rem;
+  padding: 44px 52px;
+  box-shadow: 0 4px 40px oklch(14% 0.008 90 / 0.14);
+}
+
+/* ── PAGE HEADER ─────────────────────────────────────────── */
+.p-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding-bottom: 18px; border-bottom: 1px solid var(--bd); margin-bottom: 22px;
+}
+.p-brand {
+  font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--gold); font-weight: 500;
+}
+.p-url { font-size: 10px; color: var(--muted); letter-spacing: .06em; text-align: right; line-height: 1.7; }
+.p-url a { color: var(--muted); text-decoration: none; }
+.p-url a:hover { color: var(--gold); }
+
+/* ── HERO IMAGE ──────────────────────────────────────────── */
+.p-hero {
+  width: calc(100% + 104px); margin: 0 -52px 26px;
+  height: 270px; overflow: hidden; position: relative;
+}
+.p-hero img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 55%;
+  display: block;
+}
+.p-hero-cap {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: .55rem 52px;
+  background: linear-gradient(to top, oklch(6% 0.006 90 / 0.58), transparent);
+  font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase;
+  color: oklch(100% 0 0 / 0.88); font-family: var(--sans);
+}
+
+/* ── EYEBROW + HEADING ───────────────────────────────────── */
+.p-eyebrow {
+  font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .6rem;
+  display: flex; align-items: center; gap: .5rem;
+}
+.p-eyebrow::after { content: ''; height: 1px; width: 22px; background: var(--gold); }
+.p-h1 {
+  font-family: var(--serif); font-size: 2.4rem; font-weight: 300;
+  line-height: 1.08; letter-spacing: -.02em; margin-bottom: .45rem;
+}
+.p-h1 em { font-style: italic; color: var(--deep); }
+.p-sub {
+  font-size: .88rem; font-weight: 300; color: var(--muted);
+  line-height: 1.78; max-width: 62ch; margin-bottom: 1.6rem;
+}
+
+/* ── STATS ROW ───────────────────────────────────────────── */
+.p-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--bd); margin-bottom: 26px;
+}
+.p-stat {
+  padding: 13px 16px;
+  border-right: 1px solid var(--bd);
+}
+.p-stat:last-child { border-right: none; }
+.p-stat-lbl {
+  font-size: 8.5px; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: .28rem;
+}
+.p-stat-val {
+  font-family: var(--serif); font-size: 1.2rem; font-weight: 300;
+  color: var(--ink); line-height: 1.1;
+}
+.p-stat-val em { color: var(--gold); font-style: normal; }
+.p-stat-note { font-size: .7rem; color: var(--muted); margin-top: .18rem; }
+
+/* ── TWO-COL ─────────────────────────────────────────────── */
+.p-two { display: grid; grid-template-columns: 1.15fr 1fr; gap: 30px; align-items: start; }
+
+/* ── SECTION LABEL ───────────────────────────────────────── */
+.p-lbl {
+  font-size: 9px; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .65rem;
+  display: flex; align-items: center; gap: .45rem;
+}
+.p-lbl::after { content: ''; height: 1px; width: 18px; background: var(--gold); }
+
+/* ── SECTION HEADING ─────────────────────────────────────── */
+.p-h2 {
+  font-family: var(--serif); font-size: 1.25rem; font-weight: 400;
+  color: var(--ink); margin-bottom: .5rem; line-height: 1.2;
+}
+.p-h2 em { font-style: italic; color: var(--deep); }
+
+/* ── BODY ────────────────────────────────────────────────── */
+.p-body {
+  font-size: .83rem; font-weight: 300; color: var(--muted);
+  line-height: 1.78; margin-bottom: .55rem;
+}
+
+/* ── DONE LIST ───────────────────────────────────────────── */
+.p-done { margin-top: .85rem; }
+.p-done-item {
+  display: grid; grid-template-columns: 26px 1fr;
+  gap: 9px; padding: .6rem 0; border-top: 1px solid var(--bd);
+}
+.p-done-item:last-child { border-bottom: 1px solid var(--bd); }
+.p-done-num {
+  font-family: var(--serif); font-size: 1.2rem; font-weight: 300;
+  color: var(--stone); line-height: 1;
+}
+.p-done-title { font-size: .84rem; font-weight: 500; color: var(--ink); margin-bottom: .18rem; }
+.p-done-desc { font-size: .78rem; font-weight: 300; color: var(--muted); line-height: 1.6; }
+
+/* ── PHOTO ───────────────────────────────────────────────── */
+.p-photo { overflow: hidden; position: relative; }
+.p-photo img { width: 100%; display: block; object-fit: cover; }
+.p-photo-cap {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: .45rem .7rem;
+  background: linear-gradient(to top, oklch(6% 0.006 90 / 0.55), transparent);
+  font-size: 8.5px; letter-spacing: .1em; text-transform: uppercase;
+  color: oklch(100% 0 0 / 0.88); font-family: var(--sans);
+}
+
+/* ── RULE ────────────────────────────────────────────────── */
+.p-rule { height: 1px; background: var(--bd); margin: 22px 0; }
+
+/* ── PAGE 2 PHOTO ROW ────────────────────────────────────── */
+.p-photo-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-bottom: 24px;
+}
+
+/* ── PRICING TABLE ───────────────────────────────────────── */
+.p-tbl { width: 100%; border-collapse: collapse; margin-top: .6rem; }
+.p-tbl tr { border-bottom: 1px solid var(--bd); }
+.p-tbl tr:last-child { border-bottom: none; }
+.p-tbl td { padding: .5rem 0; font-size: .8rem; }
+.p-tbl td:first-child { color: var(--muted); font-weight: 300; width: 52%; }
+.p-tbl td:last-child { text-align: right; font-weight: 400; }
+.p-tbl tr.hi td { color: var(--gold); font-weight: 500; }
+
+/* ── SCAN LIST ───────────────────────────────────────────── */
+.p-scan { list-style: none; margin-top: .5rem; }
+.p-scan li {
+  display: flex; align-items: baseline; gap: .65rem;
+  padding: .5rem 0; border-bottom: 1px solid var(--bd);
+  font-size: .8rem; font-weight: 300; color: var(--ink); line-height: 1.55;
+}
+.p-scan li:first-child { border-top: 1px solid var(--bd); }
+.p-scan li::before {
+  content: ''; flex-shrink: 0;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--gold); margin-top: .3rem;
+}
+.p-scan li strong { font-weight: 500; }
+
+/* ── CONTACT BOX ─────────────────────────────────────────── */
+.p-contact {
+  background: var(--ink); padding: 26px 32px; margin-top: 22px;
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2rem;
+}
+.p-contact-lbl {
+  font-size: 8.5px; letter-spacing: .2em; text-transform: uppercase;
+  color: oklch(100% 0 0 / 0.4); margin-bottom: .35rem;
+}
+.p-contact-h {
+  font-family: var(--serif); font-size: 1.25rem; font-weight: 300;
+  color: oklch(100% 0 0); line-height: 1.2; margin-bottom: .25rem;
+}
+.p-contact-sub { font-size: .78rem; font-weight: 300; color: oklch(100% 0 0 / 0.5); }
+.p-contact-right { text-align: right; }
+.p-contact-num {
+  font-family: var(--serif); font-size: 1.15rem; font-weight: 300;
+  color: var(--gold-l); letter-spacing: .02em;
+}
+.p-contact-detail {
+  font-size: .72rem; color: oklch(100% 0 0 / 0.38);
+  letter-spacing: .06em; margin-top: .25rem; line-height: 1.7;
+}
+
+/* ── PAGE FOOTER ─────────────────────────────────────────── */
+.p-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 14px; border-top: 1px solid var(--bd); margin-top: 22px;
+}
+.p-footer span { font-size: 8.5px; letter-spacing: .1em; color: var(--muted); }
+
+/* ══ PRINT STYLES ══════════════════════════════════════════ */
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  @page { size: A4 portrait; margin: 0; }
+
+  body { background: white; padding: 0; }
+  .print-bar { display: none !important; }
+
+  .page {
+    width: 100%; box-shadow: none; margin: 0;
+    padding: 11mm 14mm;
+  }
+  .page-2 { break-before: page; }
+
+  .p-hero { width: calc(100% + 28mm); margin-left: -14mm; margin-right: -14mm; }
+  .p-hero-cap { padding: .55rem 14mm; }
+}
+</style>
+</head>
+<body>
+
+<div class="print-bar">
+  <p>Open in Chrome · File > Print > Save as PDF for best results</p>
+  <button class="print-btn" onclick="window.print()">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 16l-4-4h3V4h2v8h3l-4 4z"/><path d="M4 18h16v2H4z"/></svg>
+    Save as PDF
+  </button>
+</div>
+
+<!-- ══════════════════ PAGE 1 ══════════════════ -->
+<div class="page">
+
+  <div class="p-header">
+    <p class="p-brand">Land for Sale &nbsp;·&nbsp; Nusa Penida, Bali</p>
+    <div class="p-url">
+      <p>Full pitch online:</p>
+      <a href="https://flantzhk.github.io/nusa-penida-pitch/">flantzhk.github.io/nusa-penida-pitch</a>
+    </div>
+  </div>
+
+  <div class="p-hero">
+    <img src="photos/hero.jpg" alt="Limestone perimeter wall and Indian Ocean view, Nusa Penida" />
+    <p class="p-hero-cap">Limestone perimeter wall · Desa Suana, Nusa Penida · Indian Ocean beyond</p>
+  </div>
+
+  <div style="margin-bottom:18px;">
+    <p class="p-eyebrow">Leasehold Land · East Coast Nusa Penida</p>
+    <h1 class="p-h1">2,346 m² above the <em>Indian Ocean.</em></h1>
+    <p class="p-sub">Hillside plot, Desa Suana, Nusa Penida. Limestone perimeter wall built from the land itself. Excavated, levelled, road in. 28-year lease to July 2054. Pondok Wisata zoning.</p>
+  </div>
+
+  <div class="p-stats">
+    <div class="p-stat">
+      <p class="p-stat-lbl">Total Area</p>
+      <p class="p-stat-val">2,346 <em>m²</em></p>
+      <p class="p-stat-note">23.46 ares, hillside</p>
+    </div>
+    <div class="p-stat">
+      <p class="p-stat-lbl">Asking Price</p>
+      <p class="p-stat-val"><em>USD 242,000</em></p>
+      <p class="p-stat-note">Lease assignment</p>
+    </div>
+    <div class="p-stat">
+      <p class="p-stat-lbl">Lease Remaining</p>
+      <p class="p-stat-val"><em>28</em> years</p>
+      <p class="p-stat-note">To July 2054</p>
+    </div>
+    <div class="p-stat">
+      <p class="p-stat-lbl">Status</p>
+      <p class="p-stat-val"><em>Ready</em> to Build</p>
+      <p class="p-stat-note">Levelled, walled, road in</p>
+    </div>
+  </div>
+
+  <div class="p-two">
+    <div>
+      <p class="p-lbl">What's been done</p>
+      <h2 class="p-h2">Not raw land. <em>A prepared canvas.</em></h2>
+      <p class="p-body">12 to 18 months of site preparation already behind you.</p>
+      <div class="p-done">
+        <div class="p-done-item">
+          <p class="p-done-num">01</p>
+          <div>
+            <p class="p-done-title">Excavated and Levelled</p>
+            <p class="p-done-desc">2,346 m² cleared and flattened across multiple terraced levels. Ready for permit.</p>
+          </div>
+        </div>
+        <div class="p-done-item">
+          <p class="p-done-num">02</p>
+          <div>
+            <p class="p-done-title">Limestone Perimeter Wall</p>
+            <p class="p-done-desc">Quarried from the plot and handlaid. Typically 6 to 12 months of work.</p>
+          </div>
+        </div>
+        <div class="p-done-item">
+          <p class="p-done-num">03</p>
+          <div>
+            <p class="p-done-title">Road Access In</p>
+            <p class="p-done-desc">Vehicle access cut in. No separate road works required.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="p-photo" style="height: 310px;">
+        <img src="photos/land-02.jpg" alt="Handlaid limestone wall" style="height:100%;" />
+        <p class="p-photo-cap">Handlaid limestone — quarried from the plot</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-footer">
+    <span>Land for Sale · Nusa Penida · USD 242,000</span>
+    <span>Page 1 of 2</span>
+    <span>flantzhk.github.io/nusa-penida-pitch</span>
+  </div>
+
+</div>
+
+<!-- ══════════════════ PAGE 2 ══════════════════ -->
+<div class="page page-2">
+
+  <div class="p-header">
+    <p class="p-brand">Land for Sale &nbsp;·&nbsp; Nusa Penida, Bali</p>
+    <p class="p-url"><a href="https://flantzhk.github.io/nusa-penida-pitch/">flantzhk.github.io/nusa-penida-pitch</a></p>
+  </div>
+
+  <div class="p-photo-row">
+    <div class="p-photo" style="height:170px;">
+      <img src="photos/land-04.jpg" alt="Terraced levels and ocean view" style="height:100%;" />
+      <p class="p-photo-cap">Overview — terraced levels, Indian Ocean beyond</p>
+    </div>
+    <div class="p-photo" style="height:170px;">
+      <img src="photos/land-03.jpg" alt="Road access to the plot" style="height:100%;" />
+      <p class="p-photo-cap">Direct vehicle access — road cut in</p>
+    </div>
+  </div>
+
+  <div class="p-two">
+    <div>
+      <p class="p-lbl">Pricing Context</p>
+      <h2 class="p-h2">Annual leasehold <em>rate equivalent.</em></h2>
+      <p class="p-body">What you effectively pay per m² per year for development land.</p>
+      <table class="p-tbl">
+        <tr><td>Seminyak</td><td>USD 15–30 / m² / yr</td></tr>
+        <tr><td>Canggu</td><td>USD 8–18 / m² / yr</td></tr>
+        <tr><td>Uluwatu</td><td>USD 5–12 / m² / yr</td></tr>
+        <tr><td>Lombok, Kuta area</td><td>USD 2–6 / m² / yr</td></tr>
+        <tr class="hi"><td>This plot, Nusa Penida</td><td>USD 3–4 / m² / yr</td></tr>
+      </table>
+
+      <div class="p-rule"></div>
+
+      <p class="p-lbl">Legal Structure</p>
+      <h2 class="p-h2">What you're <em>actually buying.</em></h2>
+      <p class="p-body">A lease assignment from PT Paradise Path Ventures (Akta No. 22, June 2023) to July 2054. Pasal 11 (Article 11) explicitly permits assignment to a third party. Foreign buyers acquire via PT PMA (foreign-owned company). All documents available for legal review before any commitment.</p>
+    </div>
+    <div>
+      <p class="p-lbl">Ready to Transfer</p>
+      <h2 class="p-h2">Fully documented, <em>fully transferable.</em></h2>
+      <ul class="p-scan">
+        <li><strong>All documentation in order.</strong> Title certificate, notarised lease agreements, due diligence report.</li>
+        <li><strong>Pondok Wisata zoning.</strong> Permits villas, boutique hotels, guesthouses, tourism facilities.</li>
+        <li><strong>Transferable to foreigners</strong> via PT PMA. Assignment explicitly permitted in notarised Akta.</li>
+        <li><strong>Construction-ready.</strong> Excavated, levelled, walled, road in.</li>
+        <li><strong>28-year lease</strong> to July 2054. Held by PT Paradise Path Ventures.</li>
+      </ul>
+      <p class="p-body" style="margin-top:.85rem; font-size:.78rem;">Your lawyer is welcome to review all documents before any commitment. Architectural drawings from the previous project available on request.</p>
+    </div>
+  </div>
+
+  <div class="p-contact">
+    <div>
+      <p class="p-contact-lbl">Get in touch</p>
+      <p class="p-contact-h">Ready to build? Let's talk.</p>
+      <p class="p-contact-sub">All enquiries go directly to the seller. Documents on request.</p>
+    </div>
+    <div class="p-contact-right">
+      <p class="p-contact-num">+62 812-4657-2624</p>
+      <p class="p-contact-detail">WhatsApp preferred<br>Responds in English and Indonesian</p>
+    </div>
+  </div>
+
+  <div class="p-footer">
+    <span>Land for Sale · Nusa Penida · USD 242,000</span>
+    <span>Page 2 of 2</span>
+    <span>flantzhk.github.io/nusa-penida-pitch</span>
+  </div>
+
+</div>
+
+<script>
+window.addEventListener('beforeprint', () => {
+  document.querySelectorAll('img').forEach(img => {
+    if (!img.complete || img.naturalWidth === 0) {
+      const src = img.src; img.src = ''; img.src = src;
+    }
+  });
+});
+</script>
+</body>
+</html>
