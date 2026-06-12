@@ -410,24 +410,15 @@ body {
 
 /* ── PHOTO GALLERY ──────────────────────────────────────────────── */
 .gallery-wrap { padding: 0 7vw; max-width: 1400px; margin: 0 auto; }
-.gallery-r1 { display: grid; grid-template-columns: 2fr 1fr; gap: 4px; }
-.gallery-sidebar { display: flex; flex-direction: column; gap: 4px; }
-.gallery-r2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 4px; }
-.gallery-r1 > figure { aspect-ratio: 16/10; }
-.gallery-sidebar figure { flex: 1; overflow: hidden; }
-.gallery-r2 figure { aspect-ratio: 4/3; }
-.gallery-r1 figure, .gallery-r2 figure {
-  margin: 0; overflow: hidden; position: relative; cursor: pointer;
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.gallery-grid figure {
+  aspect-ratio: 4/3; margin: 0; overflow: hidden; position: relative; cursor: pointer;
 }
-.gallery-r1 figure img,
-.gallery-r2 figure img,
-.gallery-sidebar figure img {
+.gallery-grid figure img {
   width: 100%; height: 100%; object-fit: cover; display: block;
-  transition: transform 6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform .5s ease;
 }
-.gallery-r1 figure:hover img,
-.gallery-r2 figure:hover img,
-.gallery-sidebar figure:hover img { transform: scale(1.04); }
+.gallery-grid figure:hover img { transform: scale(1.04); }
 .g-cap {
   position: absolute; bottom: 0; left: 0; right: 0;
   padding: .7rem 1rem;
@@ -436,9 +427,7 @@ body {
   text-transform: uppercase; opacity: 0; transition: opacity .3s;
   pointer-events: none; font-family: var(--sans);
 }
-.gallery-r1 figure:hover .g-cap,
-.gallery-r2 figure:hover .g-cap,
-.gallery-sidebar figure:hover .g-cap { opacity: 1; }
+.gallery-grid figure:hover .g-cap { opacity: 1; }
 
 /* ── LIGHTBOX ───────────────────────────────────────────────────── */
 #lightbox {
@@ -670,12 +659,8 @@ body {
   .g2, .g2w, .g2-text-img { grid-template-columns: 1fr; }
   .story-grid { grid-template-columns: 1fr; gap: 4rem; }
   .story-img { aspect-ratio: 16/9; }
-  .gallery-r1 { grid-template-columns: 1fr; }
-  .gallery-r1 > figure { aspect-ratio: 16/9; }
-  .gallery-sidebar { flex-direction: row; }
-  .gallery-sidebar figure { aspect-ratio: 4/3; }
-  .gallery-r2 { grid-template-columns: 1fr 1fr; }
-  .gallery-r2 figure:last-child { display: none; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid figure:last-child { display: none; }
   .video-grid { grid-template-columns: 1fr; }
   .wimgs { grid-template-rows: 180px 180px; }
   .nums { grid-template-columns: 1fr; }
@@ -704,8 +689,8 @@ body {
   .strip-in { grid-template-columns: 1fr 1fr; }
   .stat { padding: 1.25rem 1.5rem; }
   .sec { padding: 11vw 6vw; }
-  .gallery-r2 { grid-template-columns: 1fr; }
-  .gallery-sidebar { flex-direction: column; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-grid figure:last-child { display: block; }
   .done-item { grid-template-columns: 1fr; padding: 2rem 0; }
   .done-num { font-size: 2rem; margin-bottom: .5rem; }
   .steps { grid-template-columns: 1fr; gap: 2rem; }
@@ -792,8 +777,7 @@ body {
   .rv { opacity: 1; transform: none; transition: none; }
   .stat { opacity: 1; animation: none; }
   .hero-h1, .hero-sub, .hero-cta { opacity: 1; animation: none; }
-  .done-img img, .gallery-r1 figure img, .gallery-r2 figure img,
-  .gallery-sidebar figure img, .wimgs figure img, .vc-thumb img {
+  .done-img img, .gallery-grid figure img, .wimgs figure img, .vc-thumb img {
     transition: none;
   }
 }
@@ -914,24 +898,20 @@ body {
   <p class="lead rv">East coast. Unobstructed Indian Ocean view. Click any photo to open.</p>
 </section>
 
-<div class="gallery-wrap rv">
-  <div class="gallery-r1">
+<div class="gallery-wrap">
+  <div class="gallery-grid rv">
     <figure data-lightbox="photos/land-04.jpg" data-caption="Overview, terraced levels and the Indian Ocean beyond">
       <img src="photos/land-04.jpg" alt="Overview of levelled terraces and ocean view, Nusa Penida" loading="eager" />
       <figcaption class="g-cap">Overview, ocean view</figcaption>
     </figure>
-    <div class="gallery-sidebar">
-      <figure data-lightbox="photos/land-05.jpg" data-caption="Internal pathway between the limestone walls">
-        <img src="photos/land-05.jpg" alt="Pathway between limestone walls" loading="lazy" />
-        <figcaption class="g-cap">Internal pathway</figcaption>
-      </figure>
-      <figure data-lightbox="photos/land-06.jpg" data-caption="Wall craftsmanship detail, Nusa Penida limestone">
-        <img src="photos/land-06.jpg" alt="Limestone wall detail" loading="lazy" />
-        <figcaption class="g-cap">Wall detail</figcaption>
-      </figure>
-    </div>
-  </div>
-  <div class="gallery-r2">
+    <figure data-lightbox="photos/land-05.jpg" data-caption="Internal pathway between the limestone walls">
+      <img src="photos/land-05.jpg" alt="Pathway between limestone walls" loading="lazy" />
+      <figcaption class="g-cap">Internal pathway</figcaption>
+    </figure>
+    <figure data-lightbox="photos/land-06.jpg" data-caption="Wall craftsmanship detail, Nusa Penida limestone">
+      <img src="photos/land-06.jpg" alt="Limestone wall detail" loading="lazy" />
+      <figcaption class="g-cap">Wall detail</figcaption>
+    </figure>
     <figure data-lightbox="photos/land-03.jpg" data-caption="Road access, direct vehicle entry to the plot">
       <img src="photos/land-03.jpg" alt="Road access" loading="lazy" />
       <figcaption class="g-cap">Road access</figcaption>
